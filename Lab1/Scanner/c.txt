@@ -1,0 +1,5 @@
+lung a1234567=1;
+lung b=2;
+lung c=3;
+if (!a&&b||a<=b&c)
+    printeaza<<"test for \"token\" generator"

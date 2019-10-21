@@ -1,0 +1,23 @@
+numar primulnr;
+
+numar aldoilea;
+
+primulnr = 1;
+aldoilea = 2;
+
+printeaza << primulnr + aldoilea;
+
+daca (primulnr < aldoikea) {
+   printeaza << "primulnr < aldoilea";
+} altfel {
+   printeaza << "primulnr > aldoilea";
+}
+
+pentru (numar unNumar = 0; unNumar < 10; unNumar = unNumar + 1) {
+   printeaza << unNumar << " ";
+}
+
+cattimp (aldoilea > 0) {
+  printeaza << "aldoilea = " << aldoilea;
+  aldoilea = aldoilea - 1;
+}
