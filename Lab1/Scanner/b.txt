@@ -1,2 +1,2 @@
-printeaza << "b = " << b;
+printeaza << "b = " << bbbbbbbbb;
 printeaza << " ";

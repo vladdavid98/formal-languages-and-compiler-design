@@ -4,7 +4,7 @@ operators = ['+', '-', '*', '/', '%', '<', '<=', '=', '>=', '>',
              '|', '^', '++', '--', ',']
 reservedWords = ['opreste', 'caz', 'caracter', 'constanta', 'continua',
                  'implicit', 'fa', 'dublu', 'altfel', 'pluteste', 'pentru', 'printeaza',
-                 'daca', 'numar', 'lung', 'intoarce', 'scurt', 'marime','static', 'intrerupator',
+                 'daca', 'numar', 'lung', 'intoarce', 'scurt', 'marime', 'static', 'intrerupator',
                  'definire', 'vid', 'cattimp', 'inlinie']
 
 everything = separators + operators + reservedWords

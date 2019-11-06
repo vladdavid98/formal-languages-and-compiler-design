@@ -21,8 +21,8 @@ if __name__ == '__main__':
         lineNo = 0
         for line in file:
             lineNo += 1
-            if line[-1]=='\n':
-                line=line[0:-1]
+            if line[-1] == '\n':
+                line = line[0:-1]
             for token in tokenGenerator(line, separators):
                 if token in separators + operators + reservedWords:
                     pif.add(codification[token], -1)
