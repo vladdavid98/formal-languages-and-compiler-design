@@ -8,8 +8,10 @@ if __name__ == '__main__':
 
     file = open(fileName, 'r')
     for line in file:
-        print(line)
+        print(line, end='')
+    print("\n\n")
 
+    print("Tokens:")
     with open(fileName, 'r') as file:
         for line in file:
             print([token for token in tokenGenerator(line, separators)])
@@ -35,8 +37,8 @@ if __name__ == '__main__':
                 else:
                     raise Exception('Unknown token ' + token + ' at line ' + str(lineNo))
 
-    print('Program Internal Form: \n', pif)
-    print('Symbol Table: \n', symbolTable)
+    print('\nProgram Internal Form: \n', pif)
+    print('\nSymbol Table: \n', symbolTable)
 
     print('\n\nCodification table: ')
     for e in codification:

@@ -1,7 +1,0 @@
-INFIDELE
-	x : NUMAR ;
-	y : STRING
-|
-NEATA
-	x := 2
-NB .

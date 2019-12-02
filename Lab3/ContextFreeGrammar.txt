@@ -1,0 +1,248 @@
+MINILANGUAGE IN BNF:
+
+<program> 		::= <cmpstmt>
+<stmtlist> 		::= <stmt>
+				| <stmt><stmtlist>
+
+<stmt> 			::= <decl>
+				| <simplestmt>
+				| <structstmt>
+
+<decl> 			::= <type> <identifier>
+
+<type> 			::= <primarytype>
+				| <arraytype>
+
+<primarytype> 	::= "int
+				| "long
+				| "float"
+				| "double"
+				| "short"
+				| "char"
+
+<arraytype>		::= <primarytype> "[" <nr> "]"
+
+<cmpstmt>		::= "{" <stmtlist> "}"
+
+<simplestmt> 	::= <assignment>
+				| <outstmt>
+
+<assignment> 	::= <identifier> "=" <expression>
+
+<expression> 	::= <term>
+				| <expression> <operation> <expression>
+				| "(" <expression> <operation> <expression> ")"
+				| "!" <expression>
+				
+<operation> 	::= "+" | "-" | "*" | "/" | "%" | "^" | "&"
+
+<term> 			::= <identifier> | <nr> | <chars>
+
+<chars> 		::= <char>
+				| <char> <chars>
+
+<outstmt> 		::= "printf" "(" <identifier> ")" ";"
+
+<structstmt> 	::= <ifstmt>
+				| <whilestmt> 
+				| <forstmt> 
+				| <switchstmt> 
+				| <cmpstmt>
+
+<ifstmt> 		::= "if" <condition> <stmt> "else" <stmt>
+
+<condition> 	::= <expression> <relation> <expression>
+
+<whilestmt> 	::= "while" <condition> <stmt>
+
+<forstmt> 		::= "for" "(" <assignment> ";" <condition> ")" "stmt"
+
+<switchstmt> 	::= "switch" "(" <condition> ")" <casestmt> "default" ":" <stmtlist>
+
+<casestmt> 		::= "case" ":" <stmtlist> "break"
+
+<identifier> 	::= <letter>
+				| <letter> <identchars>
+
+<identchars> 	::= <identchar>
+				| <identchar> <identchars>
+
+<identchar> 	::= <letter>
+				| <digit>
+
+<relation> 		::= "<" | "<=" | "==" | "!=" | ">=" | ">" | "&&" | "||"
+
+
+MINILANGUAGE GRAMMAR:
+
+G=(N,E,P,S) where
+N->Set of nonterminals
+E->Set of terminals
+P->production
+S->starting symbol
+
+N = {
+    PROGRAM,
+	STMTLIST,
+	STMT,
+	DECL,
+	TYPE,
+	PRIMARYTYPE
+	ARRAYTYPE,
+	CMPSTMT,
+	SIMPLESTMT,
+	ASSIGNMENT,
+	EXPRESSION,
+	OPERATION,
+	TERM,
+	CHARS,
+	OUTSTMT,
+	STRUCTSTMT,
+	IFSTMT,
+	CONDITION,
+	WHILESTMT,
+	FORSTMT,
+	SWITCHSTMT,
+	CASESTMT,
+	IDENTIFIER,
+	IDENTCHARS,
+	IDENTCHAR,
+	RELATION
+}
+
+E = {
+    [,
+	],
+	{,
+	},
+	(,
+	),
+	;,
+	 ,
+	:,
+	+,
+	-,
+	*,
+	/,
+	%,
+	<,
+	<=,
+	=,
+	>=,
+	>,
+	>>,
+	<<,
+	==,
+	&&,
+	||,
+	!,
+	!=,
+	&,
+	~,
+	|,
+	^,
+	++,
+	--,
+	,,
+	break,
+	case,
+	char,
+	const,
+	continue,
+	default,
+	do,
+	double,
+	else,
+	float,
+	for,
+	printf,
+	if,
+	int,
+	long,
+	return,
+	short,
+	sizeof,
+	static,
+	switch,
+	typedef,
+	void,
+	while,
+	inline
+}
+
+P =  {
+    PROGRAM 		-> CMPSTMT
+	
+	STMTLIST 		-> STMT
+					| STMT STMTLIST
+					
+	STMT 			-> DECL
+					| SIMPLESTMT
+					| STRUCTSTMT
+				
+	DECL 			-> TYPE IDENTIFIER
+	
+	TYPE			-> PRIMARYTYPE
+					| ARRAYTYPE
+					
+	PRIMARYTYPE		-> int
+					| long
+					| float
+					| double
+					| short
+					| char
+	
+	ARRAYTYPE 		-> PRIMARYTYPE [ NR ]
+	
+	CMPSTMT			-> { STMTLIST }
+	
+	SIMPLESTMT		-> ASSIGNMENT
+					| OUTSTMT
+					
+	ASSIGNMENT		-> IDENTIFIER = EXPRESSION
+	
+	EXPRESSION 		-> TERM
+					| EXPRESSION OPERATION EXPRESSION
+					| ( EXPRESSION OPERATION EXPRESSION )
+					| ! EXPRESSION
+				
+	OPERATION		-> + | - | * | / | % | ^ | &
+	
+	TERM			-> IDENTIFIER NR CHARS
+	
+	CHARS			-> CHAR
+					| CHAR CHARS
+					
+	OUTSTMT 		-> printf ( IDENTIFIER ) ;
+	
+	STRUCTSTMT 		-> IFSTMT
+					| WHILESTMT
+					| FORSTMT
+					| SWITCHSTMT
+					| CMPSTMT
+					
+	IFSTMT			-> if CONDITION STMT else STMT
+	
+	CONDITION		-> EXPRESSION RELATION EXPRESSION
+	
+	WHILESTMT 		-> while CONDITION STMT
+	
+	FORSTMT			-> for ( ASSIGNMENT ; CONDITION ) STMT
+	
+	SWITCHSTMT		-> switch ( CONDITION ) CASESTMT default : STMTLIST
+	
+	CASESTMT		-> case : STMTLIST break
+	
+	IDENTIFIER		-> LETTER
+					| LETTER IDENTCHARS
+	
+	IDENTCHARS		-> IDENTCHAR
+					| IDENTCHAR IDENTCHARS
+					
+	IDENTCHAR		-> LETTER
+					| DIGIGT
+					
+	RELATION 		-> < | <= | == | != | >= | > | && | ||
+}
+
+S = PROGRAM

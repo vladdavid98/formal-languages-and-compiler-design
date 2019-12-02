@@ -75,4 +75,4 @@ def isIdentifier(token):
 
 
 def isConstant(token):
-    return re.match('^(0|[\+\-]?[1-9][0-9]*)$|^\'.\'$|^\".*\"$', token) is not None
+    return re.match('^(0|[\-]?[1-9][0-9]*)$|^\'.\'$|^\".*\"$', token) is not None
