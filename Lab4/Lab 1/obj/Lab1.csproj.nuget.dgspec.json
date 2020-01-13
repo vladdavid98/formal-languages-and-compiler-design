@@ -1,0 +1,135 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Vlad\\Desktop\\formal-languages-and-compiler-design\\Lab4\\Lab 1\\Lab1.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Vlad\\Desktop\\formal-languages-and-compiler-design\\Lab4\\ConsoleTables\\ConsoleTables.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Vlad\\Desktop\\formal-languages-and-compiler-design\\Lab4\\ConsoleTables\\ConsoleTables.csproj",
+        "projectName": "ConsoleTables",
+        "projectPath": "C:\\Users\\Vlad\\Desktop\\formal-languages-and-compiler-design\\Lab4\\ConsoleTables\\ConsoleTables.csproj",
+        "packagesPath": "C:\\Users\\Vlad\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Vlad\\Desktop\\formal-languages-and-compiler-design\\Lab4\\ConsoleTables\\obj\\",
+        "projectStyle": "PackageReference",
+        "crossTargeting": true,
+        "configFilePaths": [
+          "C:\\Users\\Vlad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net40",
+          "netstandard1.3"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net40": {
+            "projectReferences": {}
+          },
+          "netstandard1.3": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net40": {
+          "dependencies": {
+            "MinVer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.0-beta.2, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        },
+        "netstandard1.3": {
+          "dependencies": {
+            "MinVer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.0-beta.2, )"
+            },
+            "NETStandard.Library": {
+              "target": "Package",
+              "version": "[1.6.1, )",
+              "autoReferenced": true
+            },
+            "System.Reflection.TypeExtensions": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Vlad\\Desktop\\formal-languages-and-compiler-design\\Lab4\\Lab 1\\Lab1.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Vlad\\Desktop\\formal-languages-and-compiler-design\\Lab4\\Lab 1\\Lab1.csproj",
+        "projectName": "Lab1",
+        "projectPath": "C:\\Users\\Vlad\\Desktop\\formal-languages-and-compiler-design\\Lab4\\Lab 1\\Lab1.csproj",
+        "packagesPath": "C:\\Users\\Vlad\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Vlad\\Desktop\\formal-languages-and-compiler-design\\Lab4\\Lab 1\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Vlad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {
+              "C:\\Users\\Vlad\\Desktop\\formal-languages-and-compiler-design\\Lab4\\ConsoleTables\\ConsoleTables.csproj": {
+                "projectPath": "C:\\Users\\Vlad\\Desktop\\formal-languages-and-compiler-design\\Lab4\\ConsoleTables\\ConsoleTables.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

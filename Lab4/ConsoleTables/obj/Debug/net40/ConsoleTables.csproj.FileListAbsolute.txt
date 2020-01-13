@@ -1,0 +1,22 @@
+C:\Users\cbie2\source\repos\Programare Distribuita si Paralela\ConsoleTables\bin\Debug\net40\ConsoleTables.dll
+C:\Users\cbie2\source\repos\Programare Distribuita si Paralela\ConsoleTables\bin\Debug\net40\ConsoleTables.pdb
+C:\Users\cbie2\source\repos\Programare Distribuita si Paralela\ConsoleTables\obj\Debug\net40\ConsoleTables.csprojAssemblyReference.cache
+C:\Users\cbie2\source\repos\Programare Distribuita si Paralela\ConsoleTables\obj\Debug\net40\ConsoleTables.AssemblyInfoInputs.cache
+C:\Users\cbie2\source\repos\Programare Distribuita si Paralela\ConsoleTables\obj\Debug\net40\ConsoleTables.AssemblyInfo.cs
+C:\Users\cbie2\source\repos\Programare Distribuita si Paralela\ConsoleTables\obj\Debug\net40\ConsoleTables.dll
+C:\Users\cbie2\source\repos\Programare Distribuita si Paralela\ConsoleTables\obj\Debug\net40\ConsoleTables.pdb
+C:\Users\cbie2\source\repos\Programare Distribuita si Paralela\ConsoleTables\obj\Debug\net40\ConsoleTables.csproj.CoreCompileInputs.cache
+C:\Users\cbie2\source\repos\Limbaje Formale si Tehnici de Compilare\ConsoleTables\bin\Debug\net40\ConsoleTables.dll
+C:\Users\cbie2\source\repos\Limbaje Formale si Tehnici de Compilare\ConsoleTables\bin\Debug\net40\ConsoleTables.pdb
+C:\Users\cbie2\source\repos\Limbaje Formale si Tehnici de Compilare\ConsoleTables\obj\Debug\net40\ConsoleTables.csprojAssemblyReference.cache
+C:\Users\cbie2\source\repos\Limbaje Formale si Tehnici de Compilare\ConsoleTables\obj\Debug\net40\ConsoleTables.AssemblyInfoInputs.cache
+C:\Users\cbie2\source\repos\Limbaje Formale si Tehnici de Compilare\ConsoleTables\obj\Debug\net40\ConsoleTables.AssemblyInfo.cs
+C:\Users\cbie2\source\repos\Limbaje Formale si Tehnici de Compilare\ConsoleTables\obj\Debug\net40\ConsoleTables.dll
+C:\Users\cbie2\source\repos\Limbaje Formale si Tehnici de Compilare\ConsoleTables\obj\Debug\net40\ConsoleTables.pdb
+C:\Users\Vlad\Desktop\LFTC\Lab1\Limbaje Formale si Tehnici de Compilare\ConsoleTables\bin\Debug\net40\ConsoleTables.dll
+C:\Users\Vlad\Desktop\LFTC\Lab1\Limbaje Formale si Tehnici de Compilare\ConsoleTables\bin\Debug\net40\ConsoleTables.pdb
+C:\Users\Vlad\Desktop\LFTC\Lab1\Limbaje Formale si Tehnici de Compilare\ConsoleTables\obj\Debug\net40\ConsoleTables.csprojAssemblyReference.cache
+C:\Users\Vlad\Desktop\LFTC\Lab1\Limbaje Formale si Tehnici de Compilare\ConsoleTables\obj\Debug\net40\ConsoleTables.AssemblyInfoInputs.cache
+C:\Users\Vlad\Desktop\LFTC\Lab1\Limbaje Formale si Tehnici de Compilare\ConsoleTables\obj\Debug\net40\ConsoleTables.AssemblyInfo.cs
+C:\Users\Vlad\Desktop\LFTC\Lab1\Limbaje Formale si Tehnici de Compilare\ConsoleTables\obj\Debug\net40\ConsoleTables.dll
+C:\Users\Vlad\Desktop\LFTC\Lab1\Limbaje Formale si Tehnici de Compilare\ConsoleTables\obj\Debug\net40\ConsoleTables.pdb

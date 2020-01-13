@@ -1,0 +1,76 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Vlad\\Desktop\\formal-languages-and-compiler-design\\Lab4\\ConsoleTables\\ConsoleTables.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Vlad\\Desktop\\formal-languages-and-compiler-design\\Lab4\\ConsoleTables\\ConsoleTables.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Vlad\\Desktop\\formal-languages-and-compiler-design\\Lab4\\ConsoleTables\\ConsoleTables.csproj",
+        "projectName": "ConsoleTables",
+        "projectPath": "C:\\Users\\Vlad\\Desktop\\formal-languages-and-compiler-design\\Lab4\\ConsoleTables\\ConsoleTables.csproj",
+        "packagesPath": "C:\\Users\\Vlad\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Vlad\\Desktop\\formal-languages-and-compiler-design\\Lab4\\ConsoleTables\\obj\\",
+        "projectStyle": "PackageReference",
+        "crossTargeting": true,
+        "configFilePaths": [
+          "C:\\Users\\Vlad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net40",
+          "netstandard1.3"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net40": {
+            "projectReferences": {}
+          },
+          "netstandard1.3": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net40": {
+          "dependencies": {
+            "MinVer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.0-beta.2, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        },
+        "netstandard1.3": {
+          "dependencies": {
+            "MinVer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.0-beta.2, )"
+            },
+            "NETStandard.Library": {
+              "target": "Package",
+              "version": "[1.6.1, )",
+              "autoReferenced": true
+            },
+            "System.Reflection.TypeExtensions": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
