@@ -1,6 +1,4 @@
 C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\Lab 4\bin\Debug\netcoreapp3.1\Lab4.exe
-C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\Lab 4\bin\Debug\netcoreapp3.1\grammar.txt
-C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\Lab 4\bin\Debug\netcoreapp3.1\inputsequence.txt
 C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\Lab 4\bin\Debug\netcoreapp3.1\Lab4.deps.json
 C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\Lab 4\bin\Debug\netcoreapp3.1\Lab4.runtimeconfig.json
 C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\Lab 4\bin\Debug\netcoreapp3.1\Lab4.runtimeconfig.dev.json
@@ -13,3 +11,5 @@ C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\Lab 4\obj\Debug\
 C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\Lab 4\obj\Debug\netcoreapp3.1\Lab4.csproj.CopyComplete
 C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\Lab 4\obj\Debug\netcoreapp3.1\Lab4.dll
 C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\Lab 4\obj\Debug\netcoreapp3.1\Lab4.pdb
+C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\Lab 4\bin\Debug\netcoreapp3.1\grammar.txt
+C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\Lab 4\bin\Debug\netcoreapp3.1\inputsequence.txt

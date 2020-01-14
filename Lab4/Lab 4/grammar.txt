@@ -1,7 +1,34 @@
-﻿S A B C
-a b
-S
-S -> a A B C
-A -> a | b b
-B -> a | ε
-C -> b | ε
+﻿array_type assignment casestmt casestmtlist cmpstmt condition decl decl_with_init digit digits expression forstmt identifier ifstmt integer letter non_zero number operand outstmt primary_type program relation sign simplestmt stmt stmtlist structstmt switchtstmt term type whilestmt
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 29 28 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54
+program
+identifier -> 0
+non_zero -> 1
+digit -> non_zero | 1
+sign -> 11 | 12
+number -> 1
+digits -> digit digits | digit
+integer -> sign number | number
+program -> cmpstmt
+stmtlist -> stmt | stmt stmtlist
+stmt -> decl 8 | simplestmt 8 | structstmt 8
+decl -> type identifier
+decl_with_init -> decl 18 expression 8
+type -> primary_type | array_type
+primary_type -> 47 | 48 | 43 | 41 | 50 | 36
+array_type -> primary_type 2 number 3
+cmpstmt -> 4 stmtlist 5
+simplestmt -> assignment | outstmt
+assignment -> 0 18 number
+expression -> term | term expression term
+operand -> 11 | 12 | 13 | 15 | 31 | 28
+term -> 0 8 | number | 36
+outstmt -> 45 6 0 7
+structstmt -> ifstmt | whilestmt | forstmt | switchtstmt
+ifstmt -> 46 6 condition 7 stmt | 46 6 condition 7 stmt 42 stmt
+condition -> expression relation expression 8
+whilestmt -> 54 6 condition 7 stmt 8
+forstmt -> 44 6 decl_with_init 8 condition 8 assignment 7 stmt
+switchstmt -> 52 6 expression 7 4 casestmtlist 5
+casestmtlist -> casestmt casestmtlist | casestmt
+casestmt -> 35 expression 10 stmtlist 34 8
+relation -> 16 | 17 | 23 | 17 | 20

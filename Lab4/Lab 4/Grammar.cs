@@ -25,12 +25,12 @@ namespace LFTC
                     temp.Rules.First(r => r.Index == index)
                 }
             };
-    }
+        }
+
         public static Grammar FromFile(string filename)
         {
             string line;
             StreamReader file = new StreamReader(filename);
-
 
             LinkedList<string> nonTerminals = new LinkedList<string>();
             HashSet<string> terminals = new HashSet<string>();
@@ -49,15 +49,16 @@ namespace LFTC
                         {
                             nonTerminals.AddLast(tokens[j]);
                         }
+
                         if (i == 1)
                         {
                             terminals.Add(tokens[j]);
                         }
+
                         if (i == 2)
                         {
                             startingSymbol = tokens[j];
                         }
-
                     }
                 }
 
@@ -71,15 +72,17 @@ namespace LFTC
                         index++;
                         rules.Add(new Rule(rule.Trim().Split(" "), index));
                     }
+
                     productions.Add(new Production()
                     {
                         Start = tokens[0],
                         Rules = rules
                     });
-
                 }
+
                 i++;
             }
+
             return new Grammar()
             {
                 Terminals = terminals,
@@ -100,6 +103,7 @@ namespace LFTC
                     ProductionsForSymbol.Add(production);
                 }
             }
+
             return ProductionsForSymbol;
         }
 
@@ -114,9 +118,11 @@ namespace LFTC
                     productionsForNonterminal.Add(production);
                 }
             }
+
             return productionsForNonterminal;
         }
     }
+
     public class Production
     {
         public string Start;
@@ -136,29 +142,34 @@ namespace LFTC
             return sb.ToString();
         }
     }
+
     public class Rule
     {
         public List<string> Symbols = new List<string>();
         public int Index { get; set; }
+
         public Rule(string[] symbols, int index)
         {
             Symbols.AddRange(new List<string>(symbols).Where(symbol => !string.IsNullOrEmpty(symbol)));
             Index = index;
         }
+
         public IEnumerator<string> GetEnumerator()
         {
             return Symbols.GetEnumerator();
         }
+
         public string this[int index]
         {
-            get
-            {
-                return Symbols[index];
-            }
+            get { return Symbols[index]; }
         }
+
         public int Count => Symbols.Count;
+
         public bool Any(Func<string, bool> p) => Symbols.Any(p);
+
         public int IndexOf(string symbol) => Symbols.IndexOf(symbol);
+
         public string First() => Symbols.First();
 
         public override string ToString()

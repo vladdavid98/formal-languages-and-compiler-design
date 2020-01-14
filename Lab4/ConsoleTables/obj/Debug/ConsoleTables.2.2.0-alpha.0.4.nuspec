@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>ConsoleTables</id>
+    <version>2.2.0-alpha.0.4</version>
+    <authors>khalidabuhakmeh</authors>
+    <owners>khalidabuhakmeh</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/khalidabuhakmeh/ConsoleTables</projectUrl>
+    <description>Allows you to print out objects in a table view in a console application. Should be helpful for the diehard console fans.</description>
+    <releaseNotes>Add AppVeyor build and MinVer versioning</releaseNotes>
+    <copyright>Copyright © Khalid Abuhakmeh 2019</copyright>
+    <tags>consoletables,consoletable,console,table,output</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.0" />
+      <group targetFramework=".NETStandard1.3">
+        <dependency id="NETStandard.Library" version="1.6.1" exclude="Build,Analyzers" />
+        <dependency id="System.Reflection.TypeExtensions" version="4.3.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework=".NETFramework4.0" />
+      <frameworkAssembly assemblyName="System" targetFramework=".NETFramework4.0" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <file src="C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\ConsoleTables\bin\Debug\net40\ConsoleTables.pdb" target="lib\net40\ConsoleTables.pdb" />
+    <file src="C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\ConsoleTables\bin\Debug\netstandard1.3\ConsoleTables.pdb" target="lib\netstandard1.3\ConsoleTables.pdb" />
+    <file src="C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\ConsoleTables\bin\Debug\net40\ConsoleTables.dll" target="lib\net40\ConsoleTables.dll" />
+    <file src="C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\ConsoleTables\bin\Debug\netstandard1.3\ConsoleTables.dll" target="lib\netstandard1.3\ConsoleTables.dll" />
+  </files>
+</package>

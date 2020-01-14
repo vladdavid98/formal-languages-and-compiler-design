@@ -1,63 +1,63 @@
-﻿using ConsoleTables;
-using System;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ConsoleTables;
+using LFTC;
 
-namespace LFTC
+namespace Lab4
 {
-    class Program
+    internal class Program
     {
-
-
-
-        FirstSet GenerateFirst(Grammar g)
+        private FirstSet GenerateFirst(Grammar g)
         {
             FirstSet firstSet = new FirstSet();
             foreach (var a in g.NonTerminals)
             {
                 firstSet[a] = FirstOf(a, g, firstSet);
             }
+
             return firstSet;
         }
-        HashSet<string> FirstOf(string symbol, Grammar g, FirstSet firstSet)
+
+        private HashSet<string> FirstOf(string symbol, Grammar g, FirstSet firstSet)
         {
             HashSet<string> first = new HashSet<string>();
-            foreach (var production in g.Productions)
-                if (production.Start == symbol)
+            foreach (var production in g.Productions.Where(production => production.Start == symbol))
+            {
+                if (production.Rules.Count == 0)
                 {
-                    if (production.Rules.Count == 0)
+                    first.Add(Constants.EPSILON);
+                    continue;
+                }
+
+                foreach (var rule in production.Rules)
+                {
+                    if (rule.Count == 0)
                     {
                         first.Add(Constants.EPSILON);
                         continue;
                     }
-                    foreach (var rule in production.Rules)
+
+                    var firstSymbol = rule.First();
+                    if (g.NonTerminals.Any(nonterminal => nonterminal == firstSymbol))
                     {
-                        if (rule.Count == 0)
-                        {
-                            first.Add(Constants.EPSILON);
-                            continue;
-                        }
-                        var firstSymbol = rule.First();
-                        if (g.NonTerminals.Any(nonterminal => nonterminal == firstSymbol))
-                        {
-                            var gotFirsts = FirstOf(firstSymbol, g, firstSet);
-                            foreach (var f in gotFirsts)
-                                first.Add(f);
-                        }
-                        else
-                        {
-                            first.Add(firstSymbol);
-                        }
-
+                        var gotFirsts = FirstOf(firstSymbol, g, firstSet);
+                        foreach (var f in gotFirsts)
+                            first.Add(f);
                     }
-
-
+                    else
+                    {
+                        first.Add(firstSymbol);
+                    }
                 }
+            }
+
             return first;
         }
 
-        FollowSet GenerateFollow(Grammar g, FirstSet firstSet)
+        private FollowSet GenerateFollow(Grammar g, FirstSet firstSet)
         {
             FollowSet followSet = new FollowSet();
             foreach (var a in g.NonTerminals)
@@ -66,10 +66,12 @@ namespace LFTC
                 if (!followSet.ContainsKey(a))
                     followSet[a] = FollowOf(a, a, g, firstSet, followSet);
             }
+
             return followSet;
         }
 
-        private HashSet<string> FollowOperation(string symbol, HashSet<string> follow, Grammar g, Rule rule, Production p, int indexNonTerminal, string initialSymbol, FirstSet firstSet, FollowSet followSet)
+        private HashSet<string> FollowOperation(string symbol, HashSet<string> follow, Grammar g, Rule rule,
+            Production p, int indexNonTerminal, string initialSymbol, FirstSet firstSet, FollowSet followSet)
         {
             if (indexNonTerminal == rule.Count - 1)
             {
@@ -101,8 +103,10 @@ namespace LFTC
                             {
                                 follow.Add(i);
                             }
+
                             firsts.Remove(Constants.EPSILON);
                         }
+
                         foreach (var i in firsts)
                         {
                             follow.Add(i);
@@ -110,11 +114,14 @@ namespace LFTC
                     }
                 }
             }
+
             return follow;
         }
 
-        Stack<List<string>> conflicts = new Stack<List<string>>();
-        private HashSet<string> FollowOf(string symbol, string initialSymbol, Grammar g, FirstSet firstSet, FollowSet followSet)
+        private Stack<List<string>> conflicts = new Stack<List<string>>();
+
+        private HashSet<string> FollowOf(string symbol, string initialSymbol, Grammar g, FirstSet firstSet,
+            FollowSet followSet)
         {
             HashSet<string> follow = new HashSet<string>();
             if (symbol == g.StartingSymbol)
@@ -131,18 +138,22 @@ namespace LFTC
                     {
                         ruleConflict.Add(s);
                     }
+
                     if (rule.Any(r => r == symbol) && !conflicts.Contains(ruleConflict))
                     {
                         conflicts.Push(ruleConflict);
                         int indexNonTerminal = rule.IndexOf(symbol);
-                        var temp = FollowOperation(symbol, follow, g, rule, production, indexNonTerminal, initialSymbol, firstSet, followSet);
+                        var temp = FollowOperation(symbol, follow, g, rule, production, indexNonTerminal, initialSymbol,
+                            firstSet, followSet);
                         foreach (var i in temp)
                             follow.Add(i);
-                             List<string> sublist = rule.SubList(indexNonTerminal + 1, rule.Count);
+                        List<string> sublist = rule.SubList(indexNonTerminal + 1, rule.Count);
                         if (sublist.Contains(symbol))
                         {
-                            temp = FollowOperation(symbol, follow, g, rule, production, indexNonTerminal + 1 + sublist.IndexOf(symbol), initialSymbol, firstSet, followSet);
+                            temp = FollowOperation(symbol, follow, g, rule, production,
+                                indexNonTerminal + 1 + sublist.IndexOf(symbol), initialSymbol, firstSet, followSet);
                         }
+
                         conflicts.Pop();
                     }
                 }
@@ -169,7 +180,6 @@ namespace LFTC
                 {
                     foreach (var columnSymbol in columnSymbols)
                     {
-
                         if (rule[0] == columnSymbol && columnSymbol != Constants.EPSILON)
                             parsingTable[rowSymbol, columnSymbol] = rule;
                         else if (grammar.NonTerminals.Contains(rule[0]) && first[rule[0]].Contains(columnSymbol))
@@ -183,7 +193,6 @@ namespace LFTC
                         {
                             foreach (var b in follow[rowSymbol])
                             {
-
                                 parsingTable[rowSymbol, b] = rule;
                             }
                         }
@@ -215,11 +224,10 @@ namespace LFTC
                 }
             }
 
-
-
             return parsingTable;
         }
-        static void Main(string[] args)
+
+        private static void Main(string[] args)
         {
             var g = Grammar.FromFile("grammar.txt");
             var p = new Program();
@@ -231,6 +239,7 @@ namespace LFTC
                 Console.Write(string.Join(" ", first[i].ToArray()));
                 Console.WriteLine();
             }
+
             Console.WriteLine("FOLLOW");
             var follow = p.GenerateFollow(g, first);
             foreach (var i in follow.Keys)
@@ -239,6 +248,7 @@ namespace LFTC
                 Console.Write(string.Join(" ", follow[i].ToArray()));
                 Console.WriteLine();
             }
+
             List<string> ColumnSymbols = new List<string>(g.Terminals)
             {
                 Constants.END
@@ -264,6 +274,7 @@ namespace LFTC
                     var value = parsingTable.ContainsKeyPair(row, col) ? parsingTable[row, col].ToString() : "";
                     tableRow.Add(value);
                 }
+
                 table.AddRow(tableRow.ToArray());
             }
 
@@ -273,10 +284,54 @@ namespace LFTC
             string inputSequence = reader.ReadToEnd();
             Console.WriteLine("Input Sequence:");
             Console.WriteLine(inputSequence);
-            var analizer = new Analizer(g, parsingTable, inputSequence);
+            //            var analizer = new Analizer(g, parsingTable, inputSequence);
+            //            try
+            //            {
+            //                Stack<int> output = analizer.FillOutputStack();
+            //                var arr = output.ToArray();
+            //
+            //                Console.WriteLine("Output Stack:");
+            //                for (int i = arr.Length - 1; i >= 0; i--)
+            //                {
+            //                    Console.Write((arr[i] == -1 ? Constants.EPSILON : arr[i].ToString()) + " ");
+            //                }
+            //
+            //                Console.WriteLine();
+            //
+            //                Console.WriteLine("Parsing Tree: ");
+            //                ParsingTree tree = new ParsingTree(output, g);
+            //                var startingNode = tree.GenerateParsingTree();
+            //                Console.WriteLine(startingNode.ToString());
+            //            }
+            //            catch (Exception ex)
+            //            {
+            //                Console.WriteLine(ex.Message);
+            //            }
+
+            Console.WriteLine("\n\n\n\n\n\n\n");
+            ArrayList abc = new ArrayList();
+            PifGenerator ss = new PifGenerator() { Filename = "inputsequence.txt" };
+            ss.Scan();
+
+            foreach (var constantsValue in ss.InternalForm)
+            {
+                abc.Add(constantsValue.Code);
+            }
+            string inputSequence2 = null;
+            foreach (int i in abc)
+            {
+                if (i != 9)
+                {
+                    Console.WriteLine(i);
+                    inputSequence2 += i + " ";
+                }
+            }
+            inputSequence2 = inputSequence2.Remove(inputSequence2.Length - 1);
+
+            var analizer2 = new Analizer(g, parsingTable, inputSequence2);
             try
             {
-                Stack<int> output = analizer.FillOutputStack();
+                Stack<int> output = analizer2.FillOutputStack();
                 var arr = output.ToArray();
 
                 Console.WriteLine("Output Stack:");
@@ -284,6 +339,7 @@ namespace LFTC
                 {
                     Console.Write((arr[i] == -1 ? Constants.EPSILON : arr[i].ToString()) + " ");
                 }
+
                 Console.WriteLine();
 
                 Console.WriteLine("Parsing Tree: ");
@@ -296,6 +352,5 @@ namespace LFTC
                 Console.WriteLine(ex.Message);
             }
         }
-
     }
 }

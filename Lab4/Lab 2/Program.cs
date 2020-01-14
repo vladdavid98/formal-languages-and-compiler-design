@@ -4,19 +4,14 @@ using System.IO;
 
 namespace Lab2
 {
-
-
-
-
-
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Grammar usage
             // We read the grammar from file 'rg1.txt'
 
-            Console.WriteLine("Gramar");
+            Console.WriteLine("Grammar");
             var grammar = Grammar.FromFile("rg1.txt");
             Console.WriteLine(grammar.ToString());
 
@@ -39,8 +34,6 @@ namespace Lab2
             Console.WriteLine("Finite Automata");
             Console.WriteLine(finiteAutomata);
 
-
-
             // Transformations
 
             Console.WriteLine("Regular Grammar -> Finite Automata");
@@ -53,7 +46,6 @@ namespace Lab2
             }
             else
                 Console.WriteLine("The grammar is not regular\n");
-
 
             Console.WriteLine("Finite Automata -> Regular Grammar");
 

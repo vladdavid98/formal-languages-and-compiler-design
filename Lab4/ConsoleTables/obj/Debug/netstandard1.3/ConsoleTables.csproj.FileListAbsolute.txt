@@ -23,3 +23,11 @@ C:\Users\Vlad\Desktop\LFTC\Lab1\Limbaje Formale si Tehnici de Compilare\ConsoleT
 C:\Users\Vlad\Desktop\LFTC\Lab1\Limbaje Formale si Tehnici de Compilare\ConsoleTables\obj\Debug\netstandard1.3\ConsoleTables.AssemblyInfo.cs
 C:\Users\Vlad\Desktop\LFTC\Lab1\Limbaje Formale si Tehnici de Compilare\ConsoleTables\obj\Debug\netstandard1.3\ConsoleTables.dll
 C:\Users\Vlad\Desktop\LFTC\Lab1\Limbaje Formale si Tehnici de Compilare\ConsoleTables\obj\Debug\netstandard1.3\ConsoleTables.pdb
+C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\ConsoleTables\bin\Debug\netstandard1.3\ConsoleTables.deps.json
+C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\ConsoleTables\bin\Debug\netstandard1.3\ConsoleTables.dll
+C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\ConsoleTables\bin\Debug\netstandard1.3\ConsoleTables.pdb
+C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\ConsoleTables\obj\Debug\netstandard1.3\ConsoleTables.csprojAssemblyReference.cache
+C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\ConsoleTables\obj\Debug\netstandard1.3\ConsoleTables.AssemblyInfoInputs.cache
+C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\ConsoleTables\obj\Debug\netstandard1.3\ConsoleTables.AssemblyInfo.cs
+C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\ConsoleTables\obj\Debug\netstandard1.3\ConsoleTables.dll
+C:\Users\Vlad\Desktop\formal-languages-and-compiler-design\Lab4\ConsoleTables\obj\Debug\netstandard1.3\ConsoleTables.pdb

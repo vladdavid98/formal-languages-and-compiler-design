@@ -1,0 +1,45 @@
+S A B C
+a b
+S
+S -> a A B C
+A -> a | b b
+B -> a | ε
+C -> b | ε
+
+
+
+array_type assignment casestmt casestmtlist char cmpstmt condition decl decl_with_init digit digits double expression forstmt identifier identifier_part ifstmt integer letter non_zero number operand outstmt primary_type program relation sign simplestmt stmt stmtlist structstmt switchtstmt term type whilestmt
+[ ] { } ( ) , ' ; : + - * / % < <= = >= > >> << == && || ! != & ~ | ^ ++ -- . break case char const continue default do double else float for cout if int long return short sizeof static switch typedef void while
+program
+non_zero -> 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+digit -> non_zero | 0
+sign -> + | -
+number -> non_zero | non_zero digits
+digits -> digit digits | digit
+integer -> 0 | sign number | number
+char -> ' letter ' | ' digit '
+double -> integer | integer , number
+program -> cmpstmt
+stmtlist -> stmt | stmt stmtlist
+stmt -> decl ; | simplestmt ; | structstmt ;
+decl -> type | identifier
+decl_with_init -> decl = expression ;
+type -> primary_type | array_type
+primary_type -> int | long | float | double | short | char
+array_type -> primary_type [ number ]
+cmpstmt -> { stmtlist }
+simplestmt -> assignment | outstmt
+assignment -> identifier = expression
+expression -> term | term expression term
+operand -> + | - | * | % | ^ | &
+term -> identifier | number | char
+outstmt -> cout ( identifier )
+structstmt -> ifstmt | whilestmt | forstmt | switchtstmt
+ifstmt -> if ( condition ) stmt | if ( condition ) stmt else stmt
+condition -> expression relation expression
+whilestmt -> while ( condition ) stmt
+forstmt -> for ( decl_with_init ; condition ; assignment ) stmt
+switchstmt -> switch ( expression ) { casestmtlist }
+casestmtlist -> casestmt casestmtlist | casestmt
+casestmt -> case expression : stmtlist break ;
+relation -> < | <= | == | => | >

@@ -1,0 +1,12 @@
+[ ] { } ( ) , ' ; : + - * / % < <= = >= > >> << == && || ! != & ~ | ^ ++ -- . break case char const continue default do double else float for cout if int long return short sizeof static switch typedef void while
+
+
+
+"[", "]", "{", "}"5, "("6, ")"7, ";"8, " "9, ":"10
+
+"+"11, "-"12, "*"13, "/"14, "%"15, "<"16, "<="17, "="18, ">="19, ">"20,
+            ">>"21, "<<"22, "=="23, "&&"24, "||"25, "!"26, "!="27, "&"28, "~"29,
+            "|"30, "^"31, "++"32, "--"33
+
+"break"34, "case"35, "char"36, "const"37, "continue"38, "default"39, "do"40, "double"41, "else"42, "float"43,
+ "for"44, "cout"45, "if"46, "int"47, "long"48, "return"49, "short"50, "sizeof"51, "switch"52, "void"53, "while"54

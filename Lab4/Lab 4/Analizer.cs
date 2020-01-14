@@ -11,6 +11,7 @@ namespace LFTC
         public static readonly string ACC = "acc";
         public static readonly string END = "$";
     }
+
     public enum ElementType
     {
         POP,
@@ -22,46 +23,35 @@ namespace LFTC
     public class Set
     {
         private Dictionary<string, HashSet<string>> set = new Dictionary<string, HashSet<string>>();
+
         public HashSet<string> this[string index]
         {
-            get
-            {
-                return set[index];
-            }
-            set
-            {
-                set[index] = value;
-            }
-
+            get { return set[index]; }
+            set { set[index] = value; }
         }
-        public IEnumerable<string> Keys => set.Keys;
-        public bool ContainsKey(string key) => set.ContainsKey(key);
 
+        public IEnumerable<string> Keys => set.Keys;
+
+        public bool ContainsKey(string key) => set.ContainsKey(key);
     }
+
     public class FirstSet : Set
     {
     }
+
     public class FollowSet : Set
     {
-
     }
+
     public class ParsingTable
     {
-
         private Dictionary<Tuple<string, string>, Rule> Table = new Dictionary<Tuple<string, string>, Rule>();
+
         public Rule this[string row, string column]
         {
-            get
-            {
-                return Table[new Tuple<string, string>(row, column)];
-            }
-            set
-            {
-                Table[new Tuple<string, string>(row, column)] = value;
-            }
+            get { return Table[new Tuple<string, string>(row, column)]; }
+            set { Table[new Tuple<string, string>(row, column)] = value; }
         }
-
-
 
         public bool ContainsKeyPair(string row, string column)
         {
@@ -78,12 +68,15 @@ namespace LFTC
                 return ElementType.RULE;
             else if (rule.Count > 0)
             {
-                return rule[0] == Constants.ACC ? ElementType.ACC : (rule[0] == Constants.POP ? ElementType.POP : ElementType.ERR);
-
+                return rule[0] == Constants.ACC
+                    ? ElementType.ACC
+                    : (rule[0] == Constants.POP ? ElementType.POP : ElementType.ERR);
             }
+
             return ElementType.ERR;
         }
     }
+
     public class Analizer
     {
         public Grammar Grammar { get; set; }
@@ -93,6 +86,7 @@ namespace LFTC
         private Stack<string> InputStack { get; set; } = new Stack<string>();
         private Stack<string> WorkStack { get; set; } = new Stack<string>();
         private Stack<int> OutputStack { get; set; } = new Stack<int>();
+
         public Analizer(Grammar grammar, ParsingTable parsingTable, string inputSequence)
         {
             Grammar = grammar;
@@ -114,14 +108,14 @@ namespace LFTC
             //Init Output stack
 
             OutputStack.Push(-1);
-
         }
 
         public Stack<int> FillOutputStack()
         {
-
             while (true)
             {
+                var wsp = WorkStack.Peek();
+                var isp = InputStack.Peek();
                 var type = ParsingTable.GetElementType(WorkStack.Peek(), InputStack.Peek());
                 switch (type)
                 {
@@ -133,15 +127,17 @@ namespace LFTC
                                 WorkStack.Push(rule[i]);
                         OutputStack.Push(rule.Index);
                         break;
+
                     case ElementType.POP:
                         WorkStack.Pop();
                         InputStack.Pop();
                         break;
+
                     case ElementType.ACC:
                         return OutputStack;
+
                     case ElementType.ERR:
                         throw new Exception("Invalid Input sequence");
-
                 }
             }
         }

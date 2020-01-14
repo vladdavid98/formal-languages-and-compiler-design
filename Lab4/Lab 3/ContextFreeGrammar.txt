@@ -1,0 +1,112 @@
+<identifier>::=_<identifier_part> | <letter><identifier_part>
+<identifier_part>::=<letter><identifier_part> | <digit><identifier_part> | <letter>
+<letter>::=A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | a | b | c | d | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z |              	
+<non_zero>::=1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9  
+<digit>::=<non_zero> | 0
+<sign>::=+ | -
+<number>::=<non_zero> | <non_zero><digits>
+<digits>::=<digit><digits> | <digit> 
+<integer>::=0 | <sign> <number> | <number>
+<char>::=‘<letter>’ | ‘<digit>’
+<double>::=<integer>|<integer>,<number> 
+<program>::=<cmpstmt>
+<stmtList>::=<stmt>| <stmt><stmtList> 
+<stmt>::=<decl>; | <simplestmt>; | <structstmt>;
+<decl>::=<type> <identifier>
+<decl_with_init>::=<decl> = <expression>
+<type>::=<primary_type> | <array_type>
+<primary_type>::=int | long | float | double | short | char
+<array_type>::=<primary_type>[<number>]
+<cmpstmt>::={<stmtlist>}
+<simplestmt>::=<assignment> | <outstmt>
+<assignment>::=<identifier>::=<expression>
+<expression>::=<term> | <term> <operand> <expression> | (<term> <operand> <expression>)
+<operand>::=+ | - | * | % | ^ | &
+<term>::=<identifier> | <number> | <char>
+<outstmt>::=cout(<identifier>)
+<structstmt>::=<ifstmt> | <whilestmt> | <forstmt> | <switchtstmt> 
+<ifstmt>::=if(<condition>) <stmt> | if(<condition>) <stmt> else <stmt>
+<condition>::=<expression><relation><expression>
+<whilestmt>::=while(<condition>)<stmt>
+<forstmt>::=for(<decl_with_init>;<condition>;<assignment>)<stmt>
+<switchstmt>::=switch(<expressin>){<casestmtlist>}
+<casestmtlist>::=<casestmt><casestmtlist> |<casestmt>
+<casestmt>::=case <expression> : <stmtlist> break;
+<relation>::=< | <= | == | => | > 
+
+G=(N,E,S,P)
+
+N = {array_type, assignment, casestmt, casestmtlist, char, cmpstmt, condition, decl, decl_with_init, digit, digits, double, expressin, expression, forstmt, identifier, identifier_part, ifstmt, integer, letter, non_zero, number, operand, outstmt, primary_type, program, relation, sign, simplestmt, stmt, stmtlist, structstmt, switchstmt, switchtstmt, term, type, whilestmt}
+
+E = {[, ], {, }, (, ), ;,  , :, +, -, *, /, %, <, <=, =, >=, >, >>, <<, ==, &&, ||, !, !=, &, ~, |, ^, ++, --, ., break, case, char, const, continue, default, do, double, else, float, for, cout, if, int, long, return, short, sizeof, static, switch, typedef, void, while,
+}
+S = program
+
+P = {
+non_zero -> 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9  
+digit -> non_zero  | 0
+sign -> 11 | 12
+number -> non_zero | non_zero  digits 
+digits -> digit  digits | digit  
+integer -> 0 |  sign | number | number 
+char -> 58 letter 58 | 58digit58
+double -> integer | integer 34 number  
+program -> cmpstmt 
+stmtList -> stmt |  stmt  stmtList  
+stmt -> decl8 |  simplestmt8 |  structstmt8
+decl -> type | 0 
+decl_with_init -> decl 18 expression 
+type -> primary_type | array_type 
+primary_type -> int | long | float | double | short | char
+array_type -> primary_type 2 number 3
+cmpstmt -> 4 stmtlist 5
+simplestmt -> assignment | outstmt 
+assignment -> 0 18 expression 
+expression -> term | term | operand | expression  | (term | operand | expression )
+operand -> 11 | 12 | 13 | 14 | 15 | 16
+term -> 0 | number | char 
+outstmt -> 46 6 0 7
+structstmt -> ifstmt | whilestmt | forstmt | switchtstmt  
+ifstmt -> 47 6 condition 7  stmt  | 47 6 condition 7  stmt  43  stmt 
+condition -> expression  relation  expression 
+whilestmt -> 57 6 condition 7 stmt 
+forstmt -> 45 6 decl_with_init 8 condition 8 assignment 7 stmt 
+switchstmt -> 54 6 expressin 7 4 casestmtlist 5
+casestmtlist -> casestmt  casestmtlist  | casestmt 
+casestmt -> 36  expression  10  stmtlist  35 8
+relation ->  16 | 17 | 18 | 19 | 20
+} 
+
+1c2c
+non_zero -> 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9  
+digit -> non_zero  | 0
+sign -> + | -
+number -> non_zero | non_zero  digits 
+digits -> digit  digits | digit  
+integer -> 0 |  sign | number | number 
+char -> ‘ letter ’ | ‘ digit ’
+double -> integer | integer , number  
+program -> cmpstmt 
+stmtList -> stmt |  stmt  stmtList  
+stmt -> decl ; |  simplestmt ; |  structstmt ;
+decl -> type | identifier 
+decl_with_init -> decl  = expression 
+type -> primary_type | array_type 
+primary_type -> int | long | float | double | short | char
+array_type -> primary_type [ number ]
+cmpstmt -> { stmtlist }
+simplestmt -> assignment | outstmt 
+assignment -> identifier  = expression 
+expression -> term | term | operand | expression  | (term | operand | expression )
+operand -> + | - | * | % | ^ | &
+term -> identifier | number | char 
+outstmt -> cout( identifier )
+structstmt -> ifstmt | whilestmt | forstmt | switchtstmt  
+ifstmt -> if( condition )  stmt  | if( condition )  stmt  else  stmt 
+condition -> expression  relation  expression 
+whilestmt -> while( condition ) stmt 
+forstmt -> for( decl_with_init ; condition ; assignment ) stmt 
+switchstmt -> switch( expressin ){ casestmtlist }
+casestmtlist -> casestmt  casestmtlist  | casestmt 
+casestmt -> case  expression  :  stmtlist  break;
+relation ->  < | <= | == | => | >

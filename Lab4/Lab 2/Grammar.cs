@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Lab2
 {
-    class Production
+    internal class Production
     {
         public char RuleName;
         public string Rule;
@@ -16,12 +16,14 @@ namespace Lab2
             RuleName = ruleName;
             Rule = rule;
         }
+
         public override string ToString()
         {
             return RuleName + " -> " + Rule;
         }
     }
-    class Grammar
+
+    internal class Grammar
     {
         public List<string> N;
         public List<string> E;
@@ -39,9 +41,8 @@ namespace Lab2
         public static List<string> ParseLine(string line)
         {
             return new List<string>(line.Trim().Split('=')[1].Trim()[1..^1].Trim().Split(',').Select(i => i.Trim()));
-
         }
-       
+
         public static Grammar FromFile(string filename)
         {
             using (StreamReader file = new StreamReader(filename))
@@ -56,9 +57,8 @@ namespace Lab2
                 var P = Grammar.ParseRules(Grammar.ParseLine(string.Join("", lines)));
                 return new Grammar(N, E, S, P);
             }
-
         }
-        
+
         public static Grammar FromFiniteAutomata(FiniteAutomata fa)
         {
             var N = fa.Q;
@@ -71,12 +71,13 @@ namespace Lab2
             foreach (var transition in fa.S)
             {
                 var state1 = transition.SourceState;
-                var state2 = transition.DetinationState;
+                var state2 = transition.DestinationState;
                 var route = transition.Route;
                 P.Add(new Production(state1[0], route + state2));
                 if (fa.F.Contains(state2))
                     P.Add(new Production(state1[0], route));
             }
+
             return new Grammar(N, E, S, P);
         }
 
@@ -89,8 +90,8 @@ namespace Lab2
                 var values = new List<string>(rule.Split("->")[1].Split('|').Select(i => i.Trim()));
                 foreach (var value in values)
                     result.Add(new Production(lhs[0], value));
-
             }
+
             return result;
         }
 
@@ -98,10 +99,12 @@ namespace Lab2
         {
             return this.N.Contains(value.ToString());
         }
+
         public bool IsTerminal(string value)
         {
             return this.E.Contains(value);
         }
+
         public bool IsRegular()
         {
             var usedInRhs = new Dictionary<char, bool>();
@@ -116,6 +119,7 @@ namespace Lab2
                 {
                     return false;
                 }
+
                 foreach (var chr in rhs)
                 {
                     if (IsNonTerminal(chr))
@@ -129,20 +133,24 @@ namespace Lab2
                             return true;
                         hasTerminal = true;
                     }
+
                     if (chr == 'E')
                     {
                         notAllowedInRhs.Add(lhs);
                     }
                 }
+
                 if (hasNonTerminal && !hasTerminal)
                     return false;
             }
+
             foreach (var chr in notAllowedInRhs)
                 if (usedInRhs.ContainsKey(chr))
                     return false;
 
             return true;
         }
+
         public List<Production> GetProductionsFor(char nonTerminal)
         {
             if (!IsNonTerminal(nonTerminal))
@@ -155,18 +163,14 @@ namespace Lab2
         {
             var productions = GetProductionsFor(nonTerminal);
             Console.WriteLine(string.Join(",", productions.Select(prod => prod.ToString())));
-
         }
+
         public override string ToString()
         {
             return "N = { " + string.Join(",", N) + " }\n"
-               + "E = { " + string.Join(",", E) + " }\n"
-               + "P = { " + string.Join(",", P.Select(prod => prod.ToString())) + " }\n"
-               + "S = " + S + "\n";
+                   + "E = { " + string.Join(",", E) + " }\n"
+                   + "P = { " + string.Join(",", P.Select(prod => prod.ToString())) + " }\n"
+                   + "S = " + S + "\n";
         }
     }
-
 }
-
-
-

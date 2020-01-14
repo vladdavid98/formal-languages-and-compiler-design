@@ -6,31 +6,33 @@ using System.Text;
 
 namespace Lab2
 {
-    class Transition
+    internal class Transition
     {
         public string SourceState;
         public string Route;
-        public string DetinationState;
+        public string DestinationState;
 
-        public Transition(string sourceState, string route, string detinationState)
+        public Transition(string sourceState, string route, string destinationState)
         {
             SourceState = sourceState;
             Route = route;
-            DetinationState = detinationState;
-
+            DestinationState = destinationState;
         }
+
         public override string ToString()
         {
-            return "( '" + SourceState + "' , '" + Route + "' ) -> " + DetinationState;
+            return "( '" + SourceState + "' , '" + Route + "' ) -> " + DestinationState;
         }
     }
-    class FiniteAutomata
+
+    internal class FiniteAutomata
     {
         public List<string> Q;
         public List<string> E;
         public List<Transition> S;
         public string q0;
         public List<string> F;
+
         public FiniteAutomata(List<string> q, List<string> e, List<Transition> s, string q0, List<string> f)
         {
             this.Q = q;
@@ -39,34 +41,29 @@ namespace Lab2
             this.q0 = q0;
             this.F = f;
         }
+
         public static List<string> ParseLine(string line)
         {
             return new List<string>(line.Trim().Split('=')[1].Trim()[1..^1].Trim().Split(',').Select(i => i.Trim()));
-
         }
-      
+
         public static FiniteAutomata FromFile(string filename)
         {
-            using (StreamReader file = new StreamReader(filename))
-            {
-                var Q = FiniteAutomata.ParseLine(file.ReadLine());
-                var E = FiniteAutomata.ParseLine(file.ReadLine());
-                var q0 = file.ReadLine().Split('=')[1].Trim();
-                var F = FiniteAutomata.ParseLine(file.ReadLine());
+            using StreamReader file = new StreamReader(filename);
+            var Q = FiniteAutomata.ParseLine(file.ReadLine());
+            var E = FiniteAutomata.ParseLine(file.ReadLine());
+            var q0 = file.ReadLine().Split('=')[1].Trim();
+            var F = FiniteAutomata.ParseLine(file.ReadLine());
 
-                List<string> lines = new List<string>();
-                string line = string.Empty;
-                while ((line = file.ReadLine()) != null)
-                    lines.Add(line);
-                var S = FiniteAutomata.ParseTransitions(FiniteAutomata.ParseLine(string.Join("", lines)));
+            List<string> lines = new List<string>();
+            string line = string.Empty;
+            while ((line = file.ReadLine()) != null)
+                lines.Add(line);
+            var S = FiniteAutomata.ParseTransitions(FiniteAutomata.ParseLine(string.Join("", lines)));
 
-
-
-                return new FiniteAutomata(Q, E, S, q0, F);
-            }
-
+            return new FiniteAutomata(Q, E, S, q0, F);
         }
-        
+
         public static List<Transition> ParseTransitions(List<string> parts)
         {
             List<Transition> result = new List<Transition>();
@@ -77,6 +74,7 @@ namespace Lab2
                 transitions.Add($"{parts[index]},{parts[index + 1]}");
                 index += 2;
             }
+
             foreach (var transition in transitions)
             {
                 var lhs = transition.Split("->")[0].Trim();
@@ -86,8 +84,10 @@ namespace Lab2
                 var route = lhs[1..^1].Split(',')[1];
                 result.Add(new Transition(state1, route, state2));
             }
+
             return result;
         }
+
         public static FiniteAutomata FromRegularGramar(Grammar rg)
         {
             var Q = new List<string>(rg.N)
@@ -108,21 +108,24 @@ namespace Lab2
                     F.Add(q0);
                     continue;
                 }
+
                 var route = rhs[0].ToString();
                 if (rhs.Length == 2)
                 {
                     state2 = rhs[1].ToString();
                 }
+
                 S.Add(new Transition(state1.ToString(), route, state2));
             }
+
             return new FiniteAutomata(Q, E, S, q0, F);
         }
-
 
         public bool IsState(string value)
         {
             return Q.Contains(value);
         }
+
         public List<Transition> GetTransitionsFor(string state)
         {
             if (!IsState(state))
@@ -138,20 +141,15 @@ namespace Lab2
         {
             var transitions = GetTransitionsFor(state);
             Console.WriteLine(string.Join(",", transitions.Select(prod => prod.ToString())));
-
         }
+
         public override string ToString()
         {
             return "Q = { " + string.Join(",", Q) + " }\n"
-               + "E = { " + string.Join(",", E) + " }\n"
-               + "F = { " + string.Join(",", F) + " }\n"
-               + "S = { " + string.Join(",", S.Select(prod => prod.ToString())) + " }\n"
-               + "q0 = " + q0 + "\n";
+                   + "E = { " + string.Join(",", E) + " }\n"
+                   + "F = { " + string.Join(",", F) + " }\n"
+                   + "S = { " + string.Join(",", S.Select(prod => prod.ToString())) + " }\n"
+                   + "q0 = " + q0 + "\n";
         }
-
-
-
     }
-
-
 }

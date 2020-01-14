@@ -18,16 +18,16 @@ namespace LFTC
 
         public ParsingNode GenerateParsingTree()
         {
-
             var arr = _outputStack.ToArray();
             ParsingNode root = null;
             ParsingNode current = null;
-            for(int i = arr.Length - 1; i >= 0; i--) { 
-                if (arr[i] == -1) 
+            for (int i = arr.Length - 1; i >= 0; i--)
+            {
+                if (arr[i] == -1)
                 {
                     root = new ParsingNode()
                     {
-                        ProductionIndex = arr[i-1],
+                        ProductionIndex = arr[i - 1],
                         Symbols = new List<string> { _grammar.StartingSymbol }
                     };
                     current = root;
@@ -42,21 +42,24 @@ namespace LFTC
                     symbols.AddRange(current.Symbols.Skip(symbolIndex + 1));
                     var newNode = new ParsingNode()
                     {
-                        ProductionIndex = arr[Math.Max(i-1,0)],
+                        ProductionIndex = arr[Math.Max(i - 1, 0)],
                         Symbols = symbols
                     };
                     current.Child = newNode;
                     current = newNode;
                 }
             }
+
             return root;
         }
     }
+
     public class ParsingNode
     {
         public ParsingNode Child { get; set; }
         public int ProductionIndex = 0;
         public List<string> Symbols = new List<string>();
+
         public override string ToString()
         {
             if (Child != null)
